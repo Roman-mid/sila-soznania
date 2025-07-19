@@ -660,4 +660,8 @@ a {
   .warn {
     font-size: 12px;
   }
+
+  .nav-menu__item {
+    width: 100%;
+  }
 }
