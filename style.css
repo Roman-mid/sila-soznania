@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
 }
@@ -64,12 +68,21 @@ a {
   border-color: #fff;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: -110%;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  transition: 0.5s;
+}
+
 /* header */
 
 .header {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border: 1px solid #004346;
+  border: 1px solid var(--primary-green);
   position: fixed;
   width: 100%;
   background: #fff;
@@ -93,7 +106,6 @@ a {
 
 .nav-menu__list {
   display: flex;
-  gap: 40px;
 }
 
 .nav-menu__item {
@@ -101,19 +113,79 @@ a {
 }
 
 .nav-menu__link {
-  padding: 10px 0;
+  display: block;
+  padding: 20px;
+  font-weight: 500;
+  color: var(--primary-green);
+  border-bottom: 2px solid transparent;
 }
 
 .nav-menu__link:hover,
 .nav-menu__link:active {
-  opacity: 0.5;
+  border-bottom: 2px solid var(--primary-green);
+}
+
+.nav-menu__link.active {
+  border-bottom: 2px solid var(--primary-green);
+}
+
+.burger-menu {
+  height: 16px;
+  width: 20px;
+  position: relative;
+  display: none;
+}
+
+.burger-menu span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #000;
+  transition: 0.5s;
+}
+
+.burger-menu span:nth-child(1) {
+  top: 0;
+}
+.burger-menu span:nth-child(2) {
+  top: 7px;
+}
+.burger-menu span:nth-child(3) {
+  bottom: 0;
+}
+
+.burger-menu.active span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 7px;
+}
+.burger-menu.active span:nth-child(2) {
+  transform: scale(0);
+}
+.burger-menu.active span:nth-child(3) {
+  transform: rotate(-45deg);
+  bottom: 7px;
 }
 
 /* home */
 
 .home-section {
-  padding-top: 100px;
-  padding-bottom: 0;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  position: relative;
+}
+
+.home-section:before {
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: url('./images/home2.jpg') no-repeat right bottom;
+  z-index: -1;
+  opacity: 0.2;
 }
 
 .home-content {
@@ -123,7 +195,7 @@ a {
 }
 
 .home-content__text {
-  width: 40%;
+  width: 536px;
 }
 
 .main-title {
@@ -199,8 +271,31 @@ a {
 /* fears */
 
 .fears-section {
-  background: url('./images/birds.png') no-repeat left top,
-    url('./images/chain2.png') no-repeat right bottom;
+  position: relative;
+}
+
+.fears-section:after,
+.fears-section:before {
+  display: block;
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+.fears-section:after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('./images/birds.png') no-repeat left top;
+}
+
+.fears-section:before {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: url('./images/chain2.png') no-repeat right bottom;
 }
 
 .fears {
@@ -214,8 +309,7 @@ a {
 
 .fears__item {
   position: relative;
-  padding-left: 30px;
-  max-height: 30px;
+  padding: 0 30px;
   overflow: hidden;
   transition: 0.5s;
 }
@@ -238,11 +332,6 @@ a {
   transition: 0.5s;
 }
 
-.fears__item.active {
-  max-height: 200px;
-  transition: 0.5s;
-}
-
 .fears__item::before {
   display: block;
   content: '';
@@ -259,7 +348,7 @@ a {
   display: block;
   font-weight: 600;
   color: var(--primary-green);
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
   padding: 5px 0;
@@ -271,17 +360,25 @@ a {
 
 .fear__item-text {
   display: block;
-  width: 750px;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  transition: 0.3s;
 }
-
+.fears__item.active .fear__item-text {
+  max-height: 500px;
+}
 /* terapy */
 
 .terapy {
-  width: 1200px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  align-items: center;
+  gap: 20px;
   color: #fff;
 }
 
@@ -315,13 +412,14 @@ a {
 }
 
 .swiper {
-  height: 300px;
+  height: auto;
   width: 100%;
   padding: 30px 0;
 }
 
 .swiper-slide {
   width: 50%;
+  height: auto;
   text-align: center;
   border-radius: 10px;
   border: 2px dashed var(--primary-green);
@@ -391,8 +489,172 @@ a {
 
 .warn {
   margin-top: 50px;
+  line-height: 1.5;
 }
 
 .warn span {
   font-weight: 500;
+}
+
+@media (max-width: 1500px) {
+  .fears-section:after,
+  .fears-section:before {
+    opacity: 0.2;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 60px;
+  }
+  .tepapy-section {
+    position: relative;
+    background: none;
+  }
+  .tepapy-section:before {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: linear-gradient(
+        var(--green-transparent),
+        var(--primary-green),
+        var(--green-transparent)
+      ),
+      url('./images/terapy.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto, cover;
+    z-index: -1;
+  }
+
+  .terapy {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .terapy__text {
+    width: 100%;
+  }
+
+  .terapy__img {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .container {
+    padding: 0 30px;
+  }
+  .main-title {
+    font-size: 28px;
+    font-weight: 800;
+  }
+  .second-title {
+    font-size: 24px;
+  }
+
+  .lock {
+    overflow: hidden;
+  }
+  .burger-menu {
+    display: block;
+    z-index: 10;
+  }
+
+  .nav-menu_mobile {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    transition: 0.5s;
+    width: 70vw;
+    height: 100vh;
+    background: #fff;
+    padding-top: 100px;
+  }
+
+  .burger-menu.active + .nav-menu_mobile {
+    right: 0;
+  }
+
+  .nav-menu__list {
+    flex-direction: column;
+  }
+  .nav-menu__item {
+    width: 50%;
+  }
+  .overlay.active {
+    left: 0;
+  }
+
+  .aboutMe,
+  .fears {
+    width: 100%;
+  }
+
+  .swiper-slide {
+    width: 90%;
+  }
+
+  .warn,
+  .footer-subtitle {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 650px) {
+  section,
+  .contacts-section {
+    padding: 50px 0;
+  }
+
+  .fears-section:before,
+  .home-section:before {
+    background-position: center bottom;
+  }
+
+  .header-content,
+  .container {
+    padding: 0 15px;
+  }
+
+  .contacts-wrap {
+    flex-direction: column;
+  }
+
+  .terapy__text-content {
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .second-title {
+    padding: 0 10px;
+  }
+
+  p,
+  span {
+    font-size: 14px;
+  }
+
+  .fears {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 450px) {
+  .second-title {
+    width: auto;
+  }
+  .name {
+    padding: 0 20px;
+  }
+
+  .warn {
+    font-size: 12px;
+  }
 }

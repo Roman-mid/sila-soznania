@@ -4,6 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/logo4.png" />
+
+  <!-- OG -->
+  <meta name="keywords"
+    content="гипнотерапия, гипноз, лечение тревожности, страхи, панические атаки, стресс, психотерапия, ментальное здоровье, управление эмоциями, расслабление, бессонница, тревожные расстройства, самопомощь, работа с подсознанием, гипнотерапевт, уверенность в себе, восстановление внутреннего баланса">
+
+  <meta property="og:site_name" content="Сила сознания" />
+  <meta property="og:title" content="Сила сознания — Путь к внутреннему спокойствию и уверенности" />
+  <meta property="og:description"
+    content="Помогаю справиться с тревожностью, страхами, паническими атаками и стрессом с помощью современной гипнотерапии. Персональный подход. Онлайн и офлайн-сессии." />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Сила сознания" />
+  <meta property="twitter:description"
+    content="Помогаю справиться с тревожностью, страхами, паническими атаками и стрессом с помощью современной гипнотерапии. Персональный подход. Онлайн и офлайн-сессии." />
 
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,33 +35,39 @@
 </head>
 
 <body>
+  <div class="overlay"></div>
   <header class="header">
     <div class="container">
       <div class="header-content">
         <a href="/" class="logo">
           <img src="./images/logo4.png" alt="">
         </a>
+        <div class="burger-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <nav class="nav-menu nav-menu_mobile">
           <ul class="nav-menu__list">
             <li class="nav-menu__item">
-              <a href="#about" class="nav-menu__link" data-link="about">Главная</a>
+              <a href="#home" class="nav-menu__link" data-link="home">Главная</a>
             </li>
             <li class="nav-menu__item">
-              <a href="#problem" class="nav-menu__link" data-link="problem">О себе</a>
+              <a href="#aboutMe" class="nav-menu__link" data-link="aboutMe">О себе</a>
             </li>
             <li class="nav-menu__item">
-              <a href="#problem" class="nav-menu__link" data-link="problem">Направления</a>
+              <a href="#fears" class="nav-menu__link" data-link="fears">Направления</a>
             </li>
             <li class="nav-menu__item">
-              <a href="#solution" class="nav-menu__link" data-link="solution">
+              <a href="#aboutTerapy" class="nav-menu__link" data-link="aboutTerapy">
                 О сеансах</a>
             </li>
             <li class="nav-menu__item">
-              <a href="#solution" class="nav-menu__link" data-link="solution">
+              <a href="#reviews" class="nav-menu__link" data-link="reviews">
                 Отзывы</a>
             </li>
             <li class="nav-menu__item">
-              <a href="#solution" class="nav-menu__link" data-link="solution">
+              <a href="#contacts" class="nav-menu__link" data-link="contacts">
                 Контакты</a>
             </li>
           </ul>
@@ -52,7 +75,7 @@
       </div>
     </div>
   </header>
-  <section id='home-section' class='home-section'>
+  <section id='home' class='home-section' data-section='home'>
     <div class="container">
       <div class="home-content">
         <div class="home-content__text">
@@ -74,14 +97,10 @@
             <a href="mailto:Serj-psm@ukr.net" class='mail'>Serj-psm@ukr.net</a>
           </div>
         </div>
-
-        <div class="home-content__img">
-          <img src="./images/home2.jpg" alt="">
-        </div>
       </div>
     </div>
   </section>
-  <section id="aboutMe-section" class="aboutMe-section">
+  <section id="aboutMe" class="aboutMe-section" data-section='aboutMe'>
     <div class="container">
       <h2 class='second-title t-center'>О себе</h2>
       <span class='name'>Сергей Михайлович</span>
@@ -102,8 +121,7 @@
       </div>
     </div>
   </section>
-
-  <section id="fears-section" class="fears-section">
+  <section id="fears" class="fears-section" data-section='fears'>
     <div class="container">
       <h2 class='second-title border-title fears-title'>
         Пракитикующие направления
@@ -241,8 +259,7 @@
       </ul>
     </div>
   </section>
-
-  <section id="terapy" class="tepapy-section">
+  <section id="aboutTerapy" class="tepapy-section" data-section='aboutTerapy'>
     <div class="container">
       <div class="terapy">
         <div class="terapy__text">
@@ -292,14 +309,12 @@
       </div>
     </div>
   </section>
-  <section id="slider-section" class="slider-section">
+  <section id="reviews" class="slider-section" data-section='reviews'>
     <div class="container">
       <h2 class='second-title border-title'>Истории клиентов</h2>
     </div>
     <div class="swiper">
-      <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
-        <!-- Slides -->
         <div class="swiper-slide">
           <h3 class="swiper-slide__title">
             Как мама нашла ключ к сердцу сына
@@ -417,7 +432,7 @@
       </div>
     </div>
   </section>
-  <footer id="contacts-section" class="contacts-section">
+  <footer id="contacts" class="contacts-section" data-section='contacts'>
     <div class="container">
       <h2 class='second-title border-title border-title-white contacts-title'>Контакты</h2>
       <span class='footer-subtitle'>
